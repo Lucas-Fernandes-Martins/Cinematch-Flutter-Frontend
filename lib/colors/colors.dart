@@ -17,3 +17,16 @@ const LIGHT_BLACK = Color(0xFF1b1e26);
 //Hover effect
 const PINK_WHITE = Color(0xFFe6bdba);
 const BEGE_HOVER = Color(0xFFffb985);
+
+const colorScheme = ColorScheme(
+    brightness: Brightness.dark,
+    primary: RED,
+    onPrimary: WHITE,
+    secondary: WHITE,
+    onSecondary: BLACK,
+    error: RED_LIGHT,
+    onError: BLACK,
+    background: DARK_RED,
+    onBackground: WHITE,
+    surface: RED,
+    onSurface: WHITE);

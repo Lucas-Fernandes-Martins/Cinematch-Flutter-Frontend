@@ -1,3 +1,4 @@
+import 'package:cinematch_frontend/colors/colors.dart';
 import 'package:flutter/material.dart';
 import 'controls/buttons.dart';
 
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Cinematch - Tutorial',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Color(0xFFe2321f)),
+        colorScheme: colorScheme,
         useMaterial3: true,
       ),
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
@@ -43,6 +44,10 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
+  final String imagePath = "assets/images/homepage_art.png";
+
+  final String path_logo = "assets/images/logo.png";
+
   void _incrementCounter() {
     setState(() {
       // This call to setState tells the Flutter framework that something has
@@ -63,6 +68,7 @@ class _MyHomePageState extends State<MyHomePage> {
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
     return Scaffold(
+      /*Leave app bar or not?
       appBar: AppBar(
         // TRY THIS: Try changing the color here to a specific color (to
         // Colors.amber, perhaps?) and trigger a hot reload to see the AppBar
@@ -72,19 +78,28 @@ class _MyHomePageState extends State<MyHomePage> {
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
       ),
+      */
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-            LargeButton(),
-          ],
+        child: Container(
+          decoration: BoxDecoration(
+          gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: [colorScheme.background, colorScheme.primary]
+                  ),
+        ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Card(
+                color: colorScheme.secondary,
+                child: Image.asset(path_logo, width: 300, height: 300),
+              ),
+              Image.asset(imagePath, width: 300, height: 300),
+              LargeButton(text: "login"),
+              LargeButton(text: "sign up")
+            ],
+          ),
         ),
       ),
       // This trailing comma makes auto-formatting nicer for build methods.
